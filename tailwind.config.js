@@ -179,6 +179,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
+        "IBM Plex Sans",
         "ui-sans-serif",
         "system-ui",
         "-apple-system",
@@ -203,6 +204,7 @@ module.exports = {
         "serif",
       ],
       mono: [
+        "IBM Plex Mono",
         "ui-monospace",
         "SFMono-Regular",
         "Menlo",

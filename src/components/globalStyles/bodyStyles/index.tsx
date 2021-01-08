@@ -11,6 +11,9 @@ const BodyStyles = () => (
       #root {
         ${tw`w-full h-full`}
       }
+      .m-01 {
+        margin: 0.1rem;
+      }
     `}
   />
 );
