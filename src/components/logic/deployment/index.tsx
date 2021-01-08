@@ -48,6 +48,7 @@ const Deployment = ({ githubKey, deployment: dep, repo }: DeploymentProps) => {
       setDeletionState("DELETED");
     } catch (e) {
       setDeletionState("ACTIVE");
+      setFetching(false);
 
       console.log(e);
       return setError(
