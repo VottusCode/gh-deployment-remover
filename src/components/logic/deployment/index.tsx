@@ -14,9 +14,15 @@ interface DeploymentProps {
   githubKey: string | null;
   deployment: Record<string, any>;
   repo: FetchDeploymentsProps | null;
+  remove: (id: string) => unknown;
 }
 
-const Deployment = ({ githubKey, deployment: dep, repo }: DeploymentProps) => {
+const Deployment = ({
+  githubKey,
+  deployment: dep,
+  repo,
+  remove,
+}: DeploymentProps) => {
   const [fetching, setFetching] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -46,6 +52,8 @@ const Deployment = ({ githubKey, deployment: dep, repo }: DeploymentProps) => {
 
       await delDeployment({ ...repo, deploymentId: dep.id }, githubKey);
       setDeletionState("DELETED");
+
+      remove(dep.id);
     } catch (e) {
       setDeletionState("ACTIVE");
       setFetching(false);

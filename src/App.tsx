@@ -61,8 +61,6 @@ const App = () => {
       name: url.name,
     });
 
-    console.log(parsedRepository);
-
     if (!parsedRepository) return;
 
     setFetching(true);
@@ -81,6 +79,14 @@ const App = () => {
     }
 
     setFormError(null);
+  };
+
+  const removeFromDeployments = (id: string) => {
+    if (!deployments) return;
+    for (let i = 0; i < deployments.length; i++) {
+      if (!deployments[i]) continue;
+      if (deployments[i].id === id) delete deployments[i];
+    }
   };
 
   return (
@@ -122,6 +128,7 @@ const App = () => {
                         key={i}
                         githubKey={token}
                         repo={parsedRepository}
+                        remove={removeFromDeployments}
                       />
                     ))}
                   </>
